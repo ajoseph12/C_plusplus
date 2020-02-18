@@ -1,8 +1,8 @@
 //
-//  quiz_question_4.cpp
-//  Intro_to_c++
+//  quiz_question_3.cpp
+//  src
 //
-//  Created by allwyn joseph on 2/14/20.
+//  Created by allwyn joseph on 2/18/20.
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
 
@@ -56,3 +56,4 @@ int main()
     return 0;
     
 }
+

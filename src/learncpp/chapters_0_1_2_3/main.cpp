@@ -6,23 +6,24 @@
 //  Copyright © 2019 allwyn joseph. All rights reserved.
 //
 
-/*
-# include <iostream>
-# include "add.hpp"
 
-int main()
-{
-    int n1{0};
-    n1 = readNumber();
-    
-    int n2{0};
-    n2 = readNumber();
-    
-    writeAnswer(n1, n2);
-    
-    return 0;
-}
-*/
+/*
+ # include <iostream>
+ # include "add.hpp"
+ 
+ int main()
+ {
+ int n1{0};
+ n1 = readNumber();
+ 
+ int n2{0};
+ n2 = readNumber();
+ 
+ writeAnswer(n1, n2);
+ 
+ return 0;
+ }
+ */
 
 //#include <iostream>
 //
@@ -72,6 +73,18 @@ int main()
 //    return 0;
 //}
 
+# include <iostream>
 
+using namespace std;
 
-#include <cstdint>
+int main()
+{
+//    string a = "1000011";
+    int a{10};
+    cout << a;
+    
+//    for (string::size_type i = 0; i < a.size(); i++)
+//    {
+//        cout << a[i];
+//    }
+}
