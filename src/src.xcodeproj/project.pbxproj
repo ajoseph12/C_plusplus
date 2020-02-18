@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C29346C423FBC0D400B33799 /* quiz_question_3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2E7F4C723FBB83400E4032A /* quiz_question_3.cpp */; };
-		C29346CA23FBC1B900B33799 /* quiz_question_4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C29346C823FBC1B900B33799 /* quiz_question_4.cpp */; };
+		C29346CB23FBC5CF00B33799 /* quiz_question_3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2E7F4C723FBB83400E4032A /* quiz_question_3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -187,7 +186,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C29346C423FBC0D400B33799 /* quiz_question_3.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C29346CA23FBC1B900B33799 /* quiz_question_4.cpp in Sources */,
+				C29346CB23FBC5CF00B33799 /* quiz_question_3.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

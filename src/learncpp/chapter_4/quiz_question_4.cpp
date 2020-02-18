@@ -5,6 +5,7 @@
 //  Created by allwyn joseph on 2/18/20.
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
+// Link to question : https://tinyurl.com/wo65oor
 
 #include <iostream>
 #include <math.h>
@@ -27,5 +28,5 @@ double calcDist(int seconds)
     double dist {};
     dist = (constants::g * pow(seconds, 2))/2;
     
-    return  (100 - dist > 0) ? 100 - dist : 0;
+    return  (dist < 100) ? 100 - dist : 0;
 }
