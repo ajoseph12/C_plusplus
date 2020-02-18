@@ -37,7 +37,7 @@ double getAnswer(double val_1, double val_2, char exp)
     else if (exp == '-') return val_1-val_2;
     else if (exp == '/') return val_1/val_2;
     
-    return 0;
+    return NULL;
 }
 
 
@@ -51,7 +51,7 @@ int main()
     exp   = enterExp();
     ans   = getAnswer(val_1, val_2, exp);
     
-    if (ans != NULL )
+    if (ans != NULL)
         cout << val_1 << " " << exp << " " << val_2 << " is " << ans <<endl;
     
     return 0;
