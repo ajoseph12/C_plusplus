@@ -1,0 +1,711 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>5 - Operators</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	opacity: 0.5;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif; }
+.mono { font-family: Nitti, 'Microsoft YaHei', '微软雅黑', monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, Nitti, 'Microsoft YaHei', '微软雅黑', monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="63c5b8d2-f3a8-43b5-99d1-65d918a35cb3" class="page sans"><header><h1 class="page-title">5 - Operators</h1></header><div class="page-body"><nav id="1d1bb34c-3cb5-422f-a546-5eef5574f3f1" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d393f38e-8fff-443f-813d-c584f468f174">5.1 - Operator precedence and associativity</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a2f4b04b-0b41-4db9-aaad-c317276bd03f">5.2 - Arithmetic operators</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d6ba151-9a18-49d9-a161-fe0b62d2bc53">5.3 - Modulus and Exponentiation </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5f3b309c-b3bd-414e-9e98-74d2c09bcaec">5.5 - Increment/decrement operators, and side effects</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f9048169-102e-48fb-94f7-34141e578c87">5.5 Comma and conditional operators </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f0fcf23d-4806-4eb3-adda-11c1450fea20">Commas</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c9739063-20ca-46ef-bb0b-d8c90a56d4e3"><strong>Conditional operator</strong> : </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5c4ae368-5e48-40f7-8878-ac882190b734">5.6  Relational operators and floating point comparisons</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#036b113b-4362-4db8-9bc7-70f79263c119">Comparison of floating point values</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d7d5ccbe-7599-4253-aadb-4703176e97c6">Floating point equality</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5f76a736-54fa-44b1-8fa3-b981a1c716e2">5.7 Logical operators</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19e0e687-6ae1-4ad1-8872-08d79bf8cebd">Logical NOT</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#de207d67-7842-421f-a033-ce4c54531143">Logical OR</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#496f337f-cc49-434e-95ec-00ae79b4e183">Logical AND</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5d48c18f-4365-4f23-b97d-62c8565d566f">Short circuit evaluation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#44d268bb-f690-437a-b569-e28101b734dc">Mixing AND and ORs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#df903a5f-9070-40b6-b3bd-2e98e6d7016b">De Morgan&#x27;s Law</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a26aae24-1fa7-4ea3-93f6-7bd08088948e">Logical exclusive (XOR)</a></div></nav><h1 id="d393f38e-8fff-443f-813d-c584f468f174" class="">5.1 - Operator precedence and associativity</h1><div id="2a36b15c-00f7-47b2-9930-8d9029f3ae5e" class="column-list"><div id="a62e5615-6fea-40fa-8242-f559d8c79194" style="width:50%" class="column"><ul id="b0cca305-d229-4894-b2b9-b95366fd3db4" class="bulleted-list"><li><strong>Precedence</strong> is what determines the order in which operators are resolved in a compound expression. To do this, operators are assigned a level of precedence, wherein operators with the highest level of precedence is evaluated first. From the table on the right we notice that * and / is higher in the precedence ranking than + and -, hence * and / are resolved first.</li></ul><ul id="846a7351-4837-43b1-a34d-ffb40bf48357" class="bulleted-list"><li><strong>What if the precedence is equa</strong>l? <p id="feb9f30d-7c0b-401c-a85e-ed70d50844d9" class="">If this is the case (3 * 4 /  2) the operators associativity tells the compiler whether the operation is to be evaluated from left to right or right to left. The operators in precedence level 5 have an associativity of left to right, so the expression is resolved from left to right: (3 * 4) / 2.</p></li></ul><ul id="ad22fffe-7063-493a-b370-c735f2c97b2f" class="bulleted-list"><li>This being said, <strong>parenthesis</strong> has one of the highest precedence value, helping overcome precedence betwixt classic arithmetic expressions (+, -, *, / ..), like in normal arithmetic.Therefore, in  (4 + 2) * 3, &#x27;+&#x27; resolved before &#x27;*&#x27;.</li></ul><ul id="949627bb-6652-4457-8f8d-ea394d087825" class="bulleted-list"><li>Always use parenthesis when writing up expressions, to avoid dependency on the table.</li></ul></div><div id="df53581f-500b-4672-85bf-ccbb1f8482a5" style="width:50%" class="column"><figure id="92a0fa5a-c258-4088-9064-3ea196891bec" class="image"><a href="5%20Operators/Untitled.png"><img style="width:717px" src="5%20Operators/Untitled.png"/></a></figure></div></div><h1 id="a2f4b04b-0b41-4db9-aaad-c317276bd03f" class="">5.2 - Arithmetic operators</h1><ul id="b22c3b97-5ca5-4fb2-bdd2-4408b4c40fd6" class="bulleted-list"><li>There are two types of u<strong>nary arithmetic operators</strong>, plus (+) and minus (-). <ul id="b0c1704c-1f4c-4525-8a04-820fa8e70c5d" class="bulleted-list"><li>Unary minus returns operand multiplied by -1</li></ul><ul id="25732cc5-2cf1-4105-a856-299ec18e74f6" class="bulleted-list"><li>Unary plus returns operand multiplied by +1</li></ul><ul id="7b6735c8-7bbf-4a02-a9fb-d34e1f8d8324" class="bulleted-list"><li>Always use an unary operator just before the operand (-x not - x)</li></ul></li></ul><ul id="f768cd2c-394f-4bc2-a1b6-e2859844dfcc" class="bulleted-list"><li>There exists 5 <strong>binary arithmetic operators</strong> :<figure id="ad2a3cda-35d2-4266-8c6d-f49dad4bd64c" class="image"><a href="5%20Operators/Untitled%201.png"><img style="width:583px" src="5%20Operators/Untitled%201.png"/></a></figure><p id="4d96c58a-e65e-41c3-9c30-3f72985cc1af" class="">+, - and * works just as they do in real life, this however is<strong> not the case</strong> for / and %</p></li></ul><ul id="e9d6ce3c-39bd-4490-b2e5-b14e3ddcddc3" class="bulleted-list"><li>Division has two different modes <ul id="d2ccff07-00f9-4408-ae83-0e1f9006e6eb" class="bulleted-list"><li>If either or both operands are floating point values, the division performs a <strong>floating point division </strong>(7.0 / 4 = 1.75, 7 / 4.0 = 1.75, and 7.0 / 4.0 = 1.75).</li></ul><ul id="0aa94897-50cf-4793-a0cc-380552cb5d0d" class="bulleted-list"><li>If both operands are integers, division performs an<strong> integer division</strong> dropping off any fractions (4/3 = 1)</li></ul></li></ul><ul id="e03d1d36-0484-4b3c-b6a4-e3d65ef5e471" class="bulleted-list"><li><strong>How</strong> do we divide two integers and <strong>not lose the fractional part</strong>?<p id="ead22053-d8cf-4ade-afa7-6ff9176da501" class="">Using <a href="https://www.notion.so/azmed/4-Fundamental-Data-Types-041219584df14d90aab142be6ab1645d#5d5a9d02ae764180ae84531979dfd3d0"><strong>static_cast&lt;&gt;</strong></a><strong> </strong>one was able to convert char to its integer form, similarly it can be used to convert an integer to it floating point number, enabling floating point division.</p><pre id="f4cebd97-53c7-4aa9-ac18-75c7d50965b2" class="code"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int x { 2 };
+    int y { 3 };
+    cout &lt;&lt; x / y &lt;&lt; endl;                       // 0
+    cout &lt;&lt; x / static_cast&lt;double&gt;(y) &lt;&lt; endl;  // 0.666667
+    return 0;
+}</code></pre></li></ul><ul id="c39d4be6-f84f-4d42-b569-9210478a3758" class="bulleted-list"><li>Trying to divide by 0 (or 0.0) will generally cause your program to crash, as the results are mathematically undefined!</li></ul><ul id="17e09679-539e-4e8a-8e3d-f5f950c66c6d" class="bulleted-list"><li><strong>Arithmetic assignment operators</strong><figure id="bfe6fa82-7a1a-441b-a68f-a429338a55a3" class="image"><a href="5%20Operators/Untitled%202.png"><img style="width:547px" src="5%20Operators/Untitled%202.png"/></a></figure></li></ul><h1 id="4d6ba151-9a18-49d9-a161-fe0b62d2bc53" class="">5.3 - Modulus and Exponentiation </h1><ul id="630758ca-8a3b-4eb4-92e9-f5ef8f148a9c" class="bulleted-list"><li>The modulus operator (also informally known as the remainder operator) is an operator that returns the remainder after doing an integer division. Example, , 7 % 4 = 3</li></ul><ul id="57736dcb-c2e3-4055-9ef7-4b026dbea9ae" class="bulleted-list"><li>Exponent operator in C++ goes by the call pow() and is imported form the cmath library <pre id="b69d8c86-7507-40a4-be23-a4e6781ba3fc" class="code"><code>#include &lt;cmath&gt;
+double x{ std::pow(3.0, 4.0) }; // 3 to the 4th power</code></pre><p id="3b70af2d-7bec-4ed4-beb4-5a817ac9d5fe" class="">The return value of pow() float, which often results in rounding errors. So for integer exponentiation, it&#x27;s advised to create one&#x27;s own function.</p><pre id="5ed61c30-670f-4c21-ad62-d34078b76b9c" class="code"><code>#include &lt;iostream&gt;
+#include &lt;cstdint&gt; // for std::int_fast64_t
+
+using namespace std;
+
+// note: exp must be positive
+std::int_fast64_t powint(int base, int exp)
+{
+    std::int_fast64_t result{1};
+    while (exp)
+    {
+        if (exp &amp; 1)
+            result *= base;
+        exp &gt;&gt;= 1;
+        base *= base;       
+    }
+    return result;
+}
+
+int main()
+{
+    cout &lt;&lt; powint( 7, 12) &lt;&lt;endl;
+    return 0;
+}</code></pre></li></ul><h1 id="5f3b309c-b3bd-414e-9e98-74d2c09bcaec" class="">5.5 - Increment/decrement operators, and side effects</h1><p id="adf2579a-a5bf-4c39-8b64-8794acd6b869" class="">Increment/decrement has a prefix and a post-fixed version</p><figure id="04021d78-f3aa-432b-83ca-49edcbbd63f4" class="image"><a href="5%20Operators/Untitled%203.png"><img style="width:710px" src="5%20Operators/Untitled%203.png"/></a></figure><pre id="9b6a6dc2-1176-46fb-8475-692c4ea37001" class="code"><code>#include &lt;iostream&gt;
+ 
+int main()
+{
+    int x{ 5 };
+    int y{ 5 };
+    std::cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; &#x27;\n&#x27;;     // 5 5
+    std::cout &lt;&lt; ++x &lt;&lt; &quot; &quot; &lt;&lt; --y &lt;&lt; &#x27;\n&#x27;; // 6 4
+    std::cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; &#x27;\n&#x27;;     // 6 4
+    std::cout &lt;&lt; x++ &lt;&lt; &quot; &quot; &lt;&lt; y-- &lt;&lt; &#x27;\n&#x27;; // 6 4
+    std::cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; &#x27;\n&#x27;;     // 7 3
+ 
+    return 0;
+}</code></pre><ul id="152aa5d4-a533-4dcd-b76c-675838e26a2d" class="bulleted-list"><li>Side effects can lead to unexpected results, take the example of the code below <pre id="b44cef17-2230-4f57-b9b6-e07e9727cc7f" class="code"><code>int add(int x, int y)
+{
+    return x + y;
+}
+ 
+int main()
+{
+    int x{ 5 };
+    int value = add(x, ++x); // is this 5 + 6, or 6 + 6?
+    // It depends on what order your compiler evaluates the function arguments in
+ 
+    std::cout &lt;&lt; value; // value could be 11 or 12, depending on how the above line evaluates!
+    return 0;
+}</code></pre><p id="37015233-3c09-41d7-a1da-d2f44517f8ea" class="">Is add called like this &quot;add(5,6)&quot; or like this &quot;add(6,6). <strong>C++ does not define the order in which function arguments are evaluated.</strong> If the left argument is evaluated first, this becomes a call to add(5, 6), which equals 11. If the right argument is evaluated first, this becomes a call to add(6, 6), which equals 12!</p><p id="abedb4ce-8ed5-496e-b451-7dd0572fe978" class="">
+</p></li></ul><h1 id="f9048169-102e-48fb-94f7-34141e578c87" class="">5.5 Comma and conditional operators </h1><h2 id="f0fcf23d-4806-4eb3-adda-11c1450fea20" class="">Commas</h2><ul id="d5d78b66-1bed-4b6c-9e4b-b8428373c1e5" class="bulleted-list"><li>Comma operator enables evaluation of multiple expressions wherever single expression is allowed. The operator evaluates the left, followed by the right operand and returns the right operand. <pre id="9f138fc4-4a7a-4ac8-9e7f-c36be088ea7e" class="code"><code>#include &lt;iostream&gt;
+ 
+int main()
+{
+    int x{ 1 };
+    int y{ 2 };
+ 
+    std::cout &lt;&lt; (++x, ++y); // displays 3
+ 
+    return 0;
+}</code></pre><p id="eee5a0bf-44ce-4dcf-a218-33cb59dd441e" class="">First, the left operand gets evaluated to 2 and the right gets evaluated to 3. This is followed by returning the value of y (to the right of the comma)</p></li></ul><ul id="59f1e0e1-2b67-406d-a090-17635d3b1752" class="bulleted-list"><li>Comma has the lowest precedence, even lower than the assignment operator. Hence the lines below behave differently. <pre id="057e16cb-9a00-4e8d-9c6d-732e5bd5260b" class="code"><code>z = (a, b); // evaluates a,b first to get b and assign that to z
+z = a, b;   // evaluates (z = a), b, and get assigned the value of a, b is discarded.</code></pre></li></ul><ul id="c72be619-40a7-409a-9feb-62b386afdd33" class="bulleted-list"><li>Comma can be used as a separator, and using it as such doesn&#x27;t involve the operator functionality.</li></ul><h2 id="c9739063-20ca-46ef-bb0b-d8c90a56d4e3" class=""><strong>Conditional operator</strong> : </h2><ul id="32379969-4159-4a22-9a0c-795998d81719" class="bulleted-list"><li>Another short alternative to an if statement, the syntax is as follows : (condition) ? expression 1 : expression 2. If true expression 1 else expression 2</li></ul><ul id="00a024f8-02d7-4b59-875d-711ed4c9caf0" class="bulleted-list"><li><strong>Parenthesization</strong> of the conditional operator is important because it&#x27;s easier to read and one can ensure that the precedence is respected. For example, in the code below, case 1 is evaluated as expected -  if x &gt; y, x is returned else y is - however, the same can&#x27;t be said for case 2 - if x &gt; y 1 is returned else 0 is - as &lt;&lt; has greater precedence than ? .</li></ul><pre id="fdcd3557-2903-4e3f-b26e-1ad9e4b7e336" class="code"><code>std::cout &lt;&lt; ((x &gt; y) ? x : y); // CASE 1
+std::cout &lt;&lt; (x &gt; y) ? x : y; // CASE 2 -&gt; (std::cout &lt;&lt; (x &gt; y)) ? x : y;</code></pre><ul id="343b0da2-b521-42ed-b008-279cf9df896d" class="bulleted-list"><li>To properly compile with C++&#x27;s type checking, both expression in a conditional statement must either match, or the second expression must be a convertible to the type of the first expression. <pre id="90089884-803f-4a96-a2c4-38ce34b46cab" class="code"><code>int main()
+{
+	int x = 5;
+	std::cout &lt;&lt; (x != 5 ? x : &quot;x is 5&quot;); // won&#x27;t compile
+ 
+	return 0;
+}</code></pre></li></ul><ul id="0eaeb14b-4dfe-472d-b479-1d97fcf87968" class="bulleted-list"><li>Conditional statements <strong>should not be used </strong>for complex if/else statements, as it quickly becomes both unreadable and error prone.</li></ul><h1 id="5c4ae368-5e48-40f7-8878-ac882190b734" class="">5.6  Relational operators and floating point comparisons</h1><figure id="6ed972b8-ab10-495e-9ae5-6ff67626c7f6" class="image"><a href="5%20Operators/Untitled%204.png"><img style="width:666px" src="5%20Operators/Untitled%204.png"/></a></figure><ul id="432f99f4-81cd-4e1b-896c-06ebbebb8c61" class="bulleted-list"><li>Boolean conditional value:<ul id="647051ce-e620-407f-bc59-cf6f2884dd7e" class="bulleted-list"><li>if (b1 == true) is better written as if (b1)</li></ul><ul id="7d02e184-7916-4854-a88f-7f9506e2e228" class="bulleted-list"><li>if (b1== false) is better written as if (!b1)</li></ul><p id="860b75a8-ad22-409c-a803-b8ac9bdbd390" class="">Don’t add unnecessary == or != to conditions. It makes them harder to read without offering any additional value.</p></li></ul><h2 id="036b113b-4362-4db8-9bc7-70f79263c119" class="">Comparison of floating point values</h2><pre id="01eb9bcd-e099-4b35-859b-e9a295a79983" class="code"><code>int main()
+{
+    double d1{ 100.0 - 99.99 }; // should equal 0.01
+    double d2{ 10.0 - 9.99 }; // should equal 0.01
+ 
+    if (d1 == d2)
+        std::cout &lt;&lt; &quot;d1 == d2&quot; &lt;&lt; &#x27;\n&#x27;;
+    else if (d1 &gt; d2)
+        std::cout &lt;&lt; &quot;d1 &gt; d2&quot; &lt;&lt; &#x27;\n&#x27;;
+    else if (d1 &lt; d2)
+        std::cout &lt;&lt; &quot;d1 &lt; d2&quot; &lt;&lt; &#x27;\n&#x27;;
+    
+    return 0;
+}</code></pre><ul id="81358b72-876d-4809-8978-f00503641b2a" class="bulleted-list"><li>Here d1 &gt; d2 despite theoretically their values are deemed to be the same. This anomaly occurs due to rounding errors concerning floating point numbers. d1 = 0.0100000000000005116 and d2 = 0.0099999999999997868</li></ul><ul id="6f7be6f2-e86d-4c82-8738-64e7437a3b59" class="bulleted-list"><li>Under normal circumstances, relational operators on floating point operators produce correct answers and only potentially fail when the operands are almost identical. <strong>However the consequence of getting an answer right with floating point comparisons must always be kept in sight</strong></li></ul><h2 id="d7d5ccbe-7599-4253-aadb-4703176e97c6" class="">Floating point equality</h2><ul id="3fa058e5-2615-41ca-8fa9-281dfaf81cbb" class="bulleted-list"><li>Equality operators (== and ≠) are even troublesome as &quot;true&quot; is returned only if two numbers are exactly the same. And even the smallest rounding error will cause two floating point numbers to not be equal, operator== is at high risk for returning false when a true might be expected.</li></ul><ul id="57627e99-bf12-4341-ad73-f4f99cd92ffc" class="bulleted-list"><li>Comparing floating point number would involving using functions to check if the two number are almost the same. If they are &quot;close enough&quot;, they can be deemed to be the same.</li></ul><ul id="744b9255-829a-4f59-a956-9bb4a88c3ffd" class="bulleted-list"><li>One way of going around this is to write a custom approximative check function <pre id="58f3e12b-264f-425c-adef-d687987d6225" class="code"><code>bool approximatelyEqual(double a, double b, double epsilon) // Knuth&#x27;s approach
+{                                                           // relative to the magnitude 
+                                                            // of a or b.
+    return (std::abs(a - b) &lt;= (std::max(std::abs(a), std::abs(b)) * epsilon));
+}</code></pre><ul id="52eb67ff-3b8d-45f2-b665-5bffd85102db" class="bulleted-list"><li><strong>epsilon</strong> here helps defined a percentage up-to which the operands can be off when using relational operators. So if epsilon is 1% = 0.01, the difference between the operands mustn&#x27;t exceed 0.01</li></ul><pre id="b805fcb8-85e7-4c13-ac15-02abb063d064" class="code"><code>int main()
+{
+	// a is really close to 1.0, but has rounding errors, so it&#x27;s slightly smaller than 1.0
+	double a{ 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 };
+ 
+	// First, let&#x27;s compare a (almost 1.0) to 1.0.
+	std::cout &lt;&lt; approximatelyEqual(a, 1.0, 1e-8) &lt;&lt; &#x27;\n&#x27;;    //(1.11022e-16 &lt; 1e-08) = 1
+ 
+	// Second, let&#x27;s compare a-1.0 (almost 0.0) to 0.0
+	std::cout &lt;&lt; approximatelyEqual(a-1.0, 0.0, 1e-8) &lt;&lt; &#x27;\n&#x27;;//(1.11022e-16 &lt; 1.11022e-24) = 0
+}</code></pre><ul id="e042087d-3f52-440f-9b09-90923af2da89" class="bulleted-list"><li>So here the first output is 1 (expected) and the second output is 0 (not expected). And this is because the math simply breaks down close to zero.</li></ul><ul id="cd004350-2871-4818-b9f0-775d70b17119" class="bulleted-list"><li>One way of avoid this is to use Knuth&#x27;s approach in combination with a an absolute epsilon approach </li></ul><pre id="43f83ed1-4313-4fdc-92af-d55109864ae3" class="code"><code>bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relEpsilon)
+{
+	// Check if the numbers are really close -- needed when comparing numbers near zero.
+	double diff { std::abs(a-b)};
+	if (diff &lt; absEpsilon)
+		return true;
+	// Otherwise fall back to Knuth&#x27;s algorithm
+	return (diff &lt;= (std::max(std::abs(a), std::abs(b))*relEpsilon));
+}
+
+int main()
+{
+    // a is really close to 1.0, but has rounding errors
+    double a{ 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 };
+ 
+    std::cout &lt;&lt; approximatelyEqual(a, 1.0, 1e-8) &lt;&lt; &#x27;\n&#x27;;                 // compare &quot;almost 1.0&quot; to 1.0 = 1
+    std::cout &lt;&lt; approximatelyEqual(a-1.0, 0.0, 1e-8) &lt;&lt; &#x27;\n&#x27;;             // compare &quot;almost 0.0&quot; to 0.0 = 0
+    std::cout &lt;&lt; approximatelyEqualAbsRel(a-1.0, 0.0, 1e-12, 1e-8) &lt;&lt; &#x27;\n&#x27;; // compare &quot;almost 0.0&quot; to 0.0 = 1
+}</code></pre></li></ul><h1 id="5f76a736-54fa-44b1-8fa3-b981a1c716e2" class="">5.7 Logical operators</h1><p id="3a1fca18-d1b4-4a8d-ab8c-3f159717cdb1" class="">Provides us with the capability to test multiple conditions. C++ has 3 logical operators.</p><figure id="13d361b9-bc3b-4e30-b776-dacffa75f900" class="image"><a href="5%20Operators/Untitled%205.png"><img style="width:1076px" src="5%20Operators/Untitled%205.png"/></a></figure><h2 id="19e0e687-6ae1-4ad1-8872-08d79bf8cebd" class="">Logical NOT</h2><ul id="f54e7854-b651-4888-af9b-953c421eb033" class="bulleted-list"><li>Logical NOT has a very high level of precedence, and one must be wary of its usage <pre id="d41f505f-ab24-4803-936b-d5aeb93506f8" class="code"><code>int main()
+{
+    int x { 5 };
+    int y { 7 };
+ 
+    if (! x &gt; y)                                        // correct way : if (!(x&gt;y))
+        std::cout &lt;&lt; &quot;x is not greater than y\n&quot;;
+    else
+        std::cout &lt;&lt; &quot;x is equal to or greater than y\n&quot;; //outputs this as if(!(s) &gt; y)
+																												// evaluates to if (0 &gt; y) which 
+																												// is false. Hence else is called 
+    return 0;
+}</code></pre></li></ul><div id="31d76384-65f1-40bf-8e0a-aefa8a2b549a" class="column-list"><div id="05392697-8444-4820-a4e9-b309320b5da6" style="width:75%" class="column"><ul id="5e5d5cd2-1c29-46b6-ac2e-a5ea2c3daf58" class="bulleted-list"><li>Logical NOT is intended to operate on the result of other operators, the other operators and operands ought to be enclosed in brackets. </li></ul><p id="e802683e-ee0d-438a-a687-422286cb0da2" class="">
+</p></div><div id="ae2b07bc-a3ba-415e-ac57-6283b6c29ac0" style="width:24.999999999999993%" class="column"><figure id="9786d576-4292-4827-b017-660b980ce2c4" class="image"><a href="5%20Operators/Untitled%206.png"><img style="width:376px" src="5%20Operators/Untitled%206.png"/></a></figure></div></div><h2 id="de207d67-7842-421f-a033-ce4c54531143" class="">Logical OR</h2><div id="8c3112b7-632c-497d-a1b3-91cef3aca2cd" class="column-list"><div id="afa3be9b-7720-401f-87c0-64b8fdb63af3" style="width:50%" class="column"><ul id="199a1d72-62d1-4be8-bc3f-3472581447fd" class="bulleted-list"><li>Used to test if either of the condictions are true.</li></ul><ul id="b11da5a0-fdfd-4bcf-bc90-931f9bef6345" class="bulleted-list"><li>One can string together many logical OR statements </li></ul><pre id="0d050caa-454a-4365-8297-f43351cceb33" class="code"><code>if (value == 0 || value == 1 || value == 2 || value == 3)
+     std::cout &lt;&lt; &quot;You picked 0, 1, 2, or 3\n&quot;;</code></pre></div><div id="31fbcd4c-772d-46f6-8b96-55598cf5fdf9" style="width:50%" class="column"><figure id="bede8afc-9277-4fc2-8d58-c0ff9a192d5d" class="image"><a href="5%20Operators/Untitled%207.png"><img style="width:564px" src="5%20Operators/Untitled%207.png"/></a></figure></div></div><ul id="832b0ae0-1658-4899-aa63-7cf33acd82c9" class="bulleted-list"><li>Logical OR operator (||) and the bitwise OR operator (|) have separate funcitions.</li></ul><p id="498f410a-1822-4105-9eab-ba3f10cbdc44" class="">
+</p><h2 id="496f337f-cc49-434e-95ec-00ae79b4e183" class="">Logical AND</h2><div id="57c46f49-2088-45a1-949b-4f2569b59aed" class="column-list"><div id="bb13d563-f7ab-4166-97c5-1da34b4ee522" style="width:68.75%" class="column"><ul id="fd56ee54-1fdf-4e55-a1e1-0251f84842f3" class="bulleted-list"><li>Checks if both operands are true. </li></ul></div><div id="2d885071-bdbb-4a61-942c-b32339ad061d" style="width:31.250000000000007%" class="column"><figure id="19e9ae68-466e-4318-8935-15bfe2244fd2" class="image"><a href="5%20Operators/Untitled%208.png"><img style="width:566px" src="5%20Operators/Untitled%208.png"/></a></figure></div></div><p id="799c360a-6e3b-486b-ba6e-aca1c7055b59" class="">
+</p><p id="aeee05a5-c52e-405b-8eb4-faaeebeb0306" class="">
+</p><h2 id="5d48c18f-4365-4f23-b97d-62c8565d566f" class="">Short circuit evaluation</h2><p id="2bc5d0ca-c266-4144-9d44-6f37d35593b0" class="">In order for AND operator to return True, both operands must evaluate to True, If the first operand evaluated to false, regardless of the value of the second operand, a False is returned. This is called short ciruit evaluation. Similar logic applies for OR</p><h2 id="44d268bb-f690-437a-b569-e28101b734dc" class="">Mixing AND and ORs</h2><ul id="4b019327-cbed-4f5e-8066-670d90043ec8" class="bulleted-list"><li>Quite the risky task</li></ul><ul id="bc13d25f-f799-4c16-bbad-f9f980c93736" class="bulleted-list"><li>AND has higher precedence than OR, i.e value1 || value2 &amp;&amp; value3 is evaluated as value1 || (value2 &amp;&amp; value3)</li></ul><ul id="e231d6d9-7bac-4ffa-a8de-8d9cac30b3cb" class="bulleted-list"><li><mark class="highlight-yellow_background">GOLDEN RULE </mark>: Always use parentheisis!!!</li></ul><h2 id="df903a5f-9070-40b6-b3bd-2e98e6d7016b" class="">De Morgan&#x27;s Law</h2><ul id="1c17a511-b999-49e0-913a-1764228923ff" class="bulleted-list"><li>Many programmers think that !(x &amp;&amp; y) is not the same as !x &amp;&amp; !y, unfortunately it&#x27;s false</li></ul><ul id="e2f8bf21-1b31-4e01-9d83-06ba4845dff6" class="bulleted-list"><li>De Morgan&#x27;s law tells us how logical NOT should be distributed<ul id="76e9fe7a-2982-4d78-a301-95a82776d8d5" class="bulleted-list"><li>!(x &amp;&amp; y) is equivalent to !x || !y</li></ul><ul id="b17e16f9-e086-4542-8e39-c6ecbb14a21b" class="bulleted-list"><li>!(x || y) is equivalent to !x &amp;&amp; !y</li></ul><p id="1d7c0da0-be4f-41a1-8ac4-7faeac1745bf" class="">
+</p></li></ul><h2 id="a26aae24-1fa7-4ea3-93f6-7bd08088948e" class="">Logical exclusive (XOR)</h2><div id="cf02f07a-bce5-4ae5-b7e5-a55de485820a" class="column-list"><div id="0a033ae4-8f4b-4ffd-b21f-a874d47d0f64" style="width:50%" class="column"><pre id="098aa8a0-9a79-49d7-b457-826ad8e40b4f" class="code"><code>if (a != b) ... // a XOR b, assuming a and b are Booleans
+if (a != b != c != d) ... // a XOR b XOR c XOR d, assuming a, b, c, and d are Booleans
+</code></pre><p id="fb9a5aff-4301-415e-8828-aa7bb6fda7a9" class="">The above doesn&#x27;t work on integers. If one needs a form of logical XOR that works on non-boolean operands, <strong>static_cast</strong> can be used </p></div><div id="04ee9238-33af-4047-8610-8175d1d7d2de" style="width:50%" class="column"><figure id="659058a4-1eb3-4c12-8499-5307d5ba1c81" class="image"><a href="5%20Operators/Untitled%209.png"><img style="width:676px" src="5%20Operators/Untitled%209.png"/></a></figure></div></div><pre id="e00e4eaa-e9d2-4396-a095-72abdcc32227" class="code"><code>if (static_cast&lt;bool&gt;(a) != static_cast&lt;bool&gt;(b) != static_cast&lt;bool&gt;(c) != static_cast&lt;bool&gt;(d)) 
+... // a XOR b XOR c XOR d, for any type that can be converted to bool</code></pre><p id="79934fce-e51d-4f21-9c6b-a10e04253710" class="">
+</p></div></article></body></html>
