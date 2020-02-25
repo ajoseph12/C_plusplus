@@ -2,7 +2,7 @@
 //  chuck_norris.cpp
 //  codin_games
 //
-//  Created by allwyn joseph on 2/23/20.
+//  Created by allwyn joseph on 2/25/20.
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
 // Source : https://www.codingame.com/training/easy/chuck-norris
@@ -21,19 +21,19 @@ int main()
     string strInput, a;
     cout << "Enter a string : ";
     getline(cin, strInput);
-
+    
     // Convert binary representation to a string
     // to be able to loop over
     for (int i = 0; i < strInput.size(); ++i)
     {
         a += bitset<7>(strInput[i]).to_string();
     }
-
+    
     // Initializations
     int i{0};
     int j{0};
     char pointer_hold{};
-
+    
     // Begin first pointer
     while (i < a.size())
     {
@@ -42,9 +42,9 @@ int main()
         pointer_hold = a[i];
         if (pointer_hold == '0') cout << "00 0";
         if (pointer_hold == '1') cout << "0 0";
-
+        
         j = i;
-
+        
         // Begin second pointer
         while (j < a.size())
         {
