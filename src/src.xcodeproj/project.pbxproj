@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C25771BE23FE6062005EB65B /* trails.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2BC7D2423FD17A100C2D252 /* trails.cpp */; };
+		C24C6DAB240264A10081E298 /* chuck_norris.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C24C6DAA240264A10081E298 /* chuck_norris.cpp */; };
+		C24C6DAC24026CF00081E298 /* chuck_norris.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C24C6DAA240264A10081E298 /* chuck_norris.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C24C6DA1240264660081E298 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		C2E7F4B523FBB73400E4032A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C24C6DA3240264660081E298 /* codin_games */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = codin_games; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24C6DAA240264A10081E298 /* chuck_norris.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = chuck_norris.cpp; sourceTree = "<group>"; };
 		C25771BA23FE567B005EB65B /* 5_1_quiz_question_2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 5_1_quiz_question_2.cpp; sourceTree = "<group>"; };
 		C25771BC23FE57FA005EB65B /* custom_exponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = custom_exponent.cpp; sourceTree = "<group>"; };
 		C29346C823FBC1B900B33799 /* quiz_question_4.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = quiz_question_4.cpp; sourceTree = "<group>"; };
@@ -45,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C24C6DA0240264660081E298 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2E7F4B423FBB73400E4032A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C24C6DA4240264660081E298 /* codin_games */ = {
+			isa = PBXGroup;
+			children = (
+				C24C6DAA240264A10081E298 /* chuck_norris.cpp */,
+			);
+			path = codin_games;
+			sourceTree = "<group>";
+		};
 		C25771B923FE55FA005EB65B /* chapter_5 */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +111,7 @@
 			children = (
 				C2E7F4B723FBB73400E4032A /* src */,
 				C2E7F4D123FBBEA200E4032A /* learncpp */,
+				C24C6DA3240264660081E298 /* codin_games */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,6 +119,7 @@
 		C2E7F4B923FBB73400E4032A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C24C6DA4240264660081E298 /* codin_games */,
 				C2E7F4D223FBBEA300E4032A /* learncpp */,
 			);
 			path = src;
@@ -129,6 +158,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C24C6DA2240264660081E298 /* codin_games */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C24C6DA9240264660081E298 /* Build configuration list for PBXNativeTarget "codin_games" */;
+			buildPhases = (
+				C24C6D9F240264660081E298 /* Sources */,
+				C24C6DA0240264660081E298 /* Frameworks */,
+				C24C6DA1240264660081E298 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = codin_games;
+			productName = codin_games;
+			productReference = C24C6DA3240264660081E298 /* codin_games */;
+			productType = "com.apple.product-type.tool";
+		};
 		C2E7F4B623FBB73400E4032A /* src */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2E7F4BE23FBB73400E4032A /* Build configuration list for PBXNativeTarget "src" */;
@@ -172,6 +218,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "allwyn joseph";
 				TargetAttributes = {
+					C24C6DA2240264660081E298 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					C2E7F4B623FBB73400E4032A = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -194,11 +243,20 @@
 			targets = (
 				C2E7F4B623FBB73400E4032A /* src */,
 				C2E7F4D023FBBEA200E4032A /* learncpp */,
+				C24C6DA2240264660081E298 /* codin_games */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C24C6D9F240264660081E298 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24C6DAB240264A10081E298 /* chuck_norris.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2E7F4B323FBB73400E4032A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,13 +268,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C25771BE23FE6062005EB65B /* trails.cpp in Sources */,
+				C24C6DAC24026CF00081E298 /* chuck_norris.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		C24C6DA7240264660081E298 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C24C6DA8240264660081E298 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		C2E7F4BC23FBB73400E4032A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -363,6 +437,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C24C6DA9240264660081E298 /* Build configuration list for PBXNativeTarget "codin_games" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C24C6DA7240264660081E298 /* Debug */,
+				C24C6DA8240264660081E298 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C2E7F4B223FBB73400E4032A /* Build configuration list for PBXProject "src" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
