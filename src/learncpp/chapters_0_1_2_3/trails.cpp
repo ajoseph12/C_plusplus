@@ -6,42 +6,48 @@
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
 
-#include <bitset>
+#include <cstdint>
 #include <iostream>
-
-using namespace std;
-
-std::bitset<4> rotl ( std::bitset<4> bits)
-{
-//    if (bits.test(3))
-//    {
-//        bits <<= 1;
-//        bits.set(0);
-//    }
-//    else
-//        bits <<= 1;
-//    return bits;
-    
-//    std::bitset<4> rbits{bits};
-//    rbits >>= 3;
-//    bits <<=1;
-//
-//    return rbits | bits;
-    
-    return (bits << 1) | (bits >> 3);
-}
-
-
 
 int main()
 {
-    std::bitset<4> bits1{0b0001};
-    std::cout << rotl(bits1) << "\n";
-    
-    std::bitset<4> bits2{0b1000};
-    std::cout << rotl(bits2) << "\n";
-    
+//    constexpr std::uint_fast8_t option_viewed{ 0x01 };
+    std::bitset<8> bin1{ 0b1100'0101 };
+//    constexpr std::uint_fast8_t option_favorited{ 0x04 };
+//    constexpr std::uint_fast8_t option_shared{ 0x08 };
+//    constexpr std::uint_fast8_t option_deleted{ 0x80 };
+//
+//    std::uint_fast8_t myArticleFlags{};
+////    std::cout << "Enter a hex file : ";
+////    std::cin >> std::hex >> myArticleFlags;
+//    myArticleFlags != option_viewed;
+//
+//    std::cout << " Was the article deleted ? \t" << static_cast<bool>(myArticleFlags & option_deleted) <<std::endl;
+//
+//    if (myArticleFlags & option_favorited)
+//        myArticleFlags &= ~option_favorited;
+    std::cout << bin1 <<std::endl;
+    std::cout << std::dec << bin1 << '\n'; 
+    return 0;
 }
+
+//int main()
+//{
+//    constexpr std::uint_fast8_t isHungry{   1 << 0 };
+//    constexpr std::uint_fast8_t isSad{      1 << 2 };
+//    constexpr std::uint_fast8_t isMad{      1 << 3 };
+//    constexpr std::uint_fast8_t isHappy{    1 << 4 };
+//    constexpr std::uint_fast8_t isLaughing{ 1 << 5 };
+//
+//    std::uint_fast8_t me{};
+//
+//    me |= isHappy | isLaughing;
+//    me &= ~isLaughing;
+//
+//    cout << "Am I happy? \t" << static_cast<bool>(me & isHappy) << "\n";
+//    cout << "Am I laughing? \t" << static_cast<bool>(me & isLaughing) << "\n";
+//}
+
 
 //int main()
 //{
