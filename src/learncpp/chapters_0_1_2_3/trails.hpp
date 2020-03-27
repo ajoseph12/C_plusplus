@@ -11,4 +11,9 @@
 
 #include <stdio.h>
 
+inline namespace constants
+{
+    constexpr int max_class_size { 100 };
+}
+
 #endif /* trails_hpp */

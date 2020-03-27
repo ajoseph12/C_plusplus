@@ -6,29 +6,24 @@
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
 
-#include <cstdint>
 #include <iostream>
+#include <string>
+
+struct Employee
+{
+    short id { 1 };
+    int age { 24 };
+    double salarty { 40000 };
+};
 
 int main()
 {
-//    constexpr std::uint_fast8_t option_viewed{ 0x01 };
-    std::bitset<8> bin1{ 0b1100'0101 };
-//    constexpr std::uint_fast8_t option_favorited{ 0x04 };
-//    constexpr std::uint_fast8_t option_shared{ 0x08 };
-//    constexpr std::uint_fast8_t option_deleted{ 0x80 };
-//
-//    std::uint_fast8_t myArticleFlags{};
-////    std::cout << "Enter a hex file : ";
-////    std::cin >> std::hex >> myArticleFlags;
-//    myArticleFlags != option_viewed;
-//
-//    std::cout << " Was the article deleted ? \t" << static_cast<bool>(myArticleFlags & option_deleted) <<std::endl;
-//
-//    if (myArticleFlags & option_favorited)
-//        myArticleFlags &= ~option_favorited;
-    std::cout << bin1 <<std::endl;
-    std::cout << std::dec << bin1 << '\n'; 
-    return 0;
+    Employee allwyn;
+    allwyn.salarty = 40524;
+    
+    Employee guigui {2, 22, 45000};
+    std::cout << guigui.salarty;
+    
 }
 
 //int main()
