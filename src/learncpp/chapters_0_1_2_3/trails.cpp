@@ -6,24 +6,19 @@
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
 
-#include <iostream>
-#include <string>
 
-struct Employee
-{
-    short id { 1 };
-    int age { 24 };
-    double salarty { 40000 };
-};
+#include <iostream>
+#include "trails_2.hpp"
+
+//void doSomething(); // forward declaration for function doSomething()
+
+#define PRINT
 
 int main()
 {
-    Employee allwyn;
-    allwyn.salarty = 40524;
+    doSomething();
     
-    Employee guigui {2, 22, 45000};
-    std::cout << guigui.salarty;
-    
+    return 0;
 }
 
 //int main()
