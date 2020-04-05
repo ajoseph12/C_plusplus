@@ -8,19 +8,50 @@
 
 
 #include <iostream>
-#include "trails_2.hpp"
 
-//void doSomething(); // forward declaration for function doSomething()
+//int main()
+//{
+//    int outer {1};
+//    while (outer < 6)
+//    {
+//        int inner {5};
+//        while (inner)
+//        {
+//            if (inner  <= outer)
+//                std::cout << inner << " ";
+//            else
+//                std::cout << "  ";
+//                
+//            --inner;
+//        }
+//        std::cout << "\n";
+//        ++outer;
+//    }
+//}
 
-#define PRINT
 
 int main()
 {
-    doSomething();
-    
-    return 0;
-}
+    int outer {1};
+    do
+    {
+        int inner {5};
+        do
+        {
+            if (inner  <= outer)
+                std::cout << inner << " ";
+            else
+                std::cout << "  ";
+            
+            --inner;
+        }
+        while (inner);
+        std::cout << "\n";
+        ++outer;
+    }
+    while(outer < 6);
 
+}
 //int main()
 //{
 //    constexpr std::uint_fast8_t isHungry{   1 << 0 };
