@@ -1,43 +1,48 @@
-//
-//  trails.cpp
-//  src
-//
-//  Created by allwyn joseph on 2/19/20.
-//  Copyright © 2020 allwyn joseph. All rights reserved.
-//
-
-
 #include <iostream>
-#include <random> // for std::mt19937
-#include <ctime> // for std::time
-#include <iostream>
+#include <array>
+#include <vector>
 
-bool isLowerVowel(char c)
+
+struct player
 {
-    switch (c)
-    {
-        case 'a':
-        case 'e':
-        case 'i':
-        case 'o':
-        case 'u':
-            return true;
-        default:
-            return false;
-    }
+    std::string name;
+    std::vector<int> cards;
+};
+
+int getNumOfPlayers()
+{
+    int num_players{0};
+    std::cout << "Please enter number of players : ";
+    std::cin >> num_players;
+    
+    return num_players;
 }
 
-// returns the number of the test that failed, or 0 if all tests passed
-int test()
+void dohere(std::vector<player>& players)
 {
-    if (isLowerVowel('g') != true) return 1;
-    if (isLowerVowel('q') != false) return 2;
+    for (auto p : players)
+    {
+        p.name = "Allwyn";
+    }
     
-    return 0;
+}
+
+void hit(std::vector<int>& cards, int times)
+{
+    
 }
 
 int main()
 {
-    test();
+    int num_players{getNumOfPlayers()};
+//    std::vector<player> players(num_players);
+    
+//    dohere(players);
+    
+    std::vector<int> array(num_players);
+    for (int i : array)
+        std::cout << i << ' ';
+    std::cout << "size of : " << array.size();
     return 0;
 }
+
