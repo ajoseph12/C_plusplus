@@ -1,305 +1,290 @@
 //
-//  P_6_x_quiz_question_7.hpp
-//  learncpp
+//  trails.hpp
+//  src
 //
-//  Created by allwyn joseph on 9/29/20.
+//  Created by allwyn joseph on 2/19/20.
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
 
-#ifndef P_6_x_quiz_question_7_hpp
-#define P_6_x_quiz_question_7_hpp
-
 #include <iostream>
-#include <random>
-#include <array>
 
+using namespace std;
 
-#endif /* P_6_x_quiz_question_7_hpp */
+// Global constant expressions
+constexpr int cardsInADeck{ 52 };
+constexpr int cardInASuit{ 13 };
+constexpr int blackJack{ 21 };
+constexpr int maxDealerValue{ 17 };
 
-// Maximum score before losing.
-constexpr int maximumScore{ 21 };
-
-// Minimum score that the dealer has to have.
-constexpr int minimumDealerScore{ 17 };
-
-
-enum class Ranks
+enum class CardRank
 {
-    // Enum object representing the
-    // values of cards in a deck
-    TWO,
-    THREE,
-    FOUR,
-    FIVE,
-    SIX,
-    SEVEN,
-    EIGHT,
-    NINE,
-    TEN,
-    JACK,
-    QUEEN,
-    KING,
-    ACE,
-    TOTAL,
-};
-
-enum class Suits
-{
-    // Enum object representing 
-    HEARTS,
-    SPADES,
-    DIAMONDS,
-    CLUBS,
-    TOTAL,
+    two,
+    three,
+    four,
+    five,
+    six,
+    seven,
+    eight,
+    nine,
+    ten,
+    jack,
+    queen,
+    king,
+    ace,
     
+    max_rank
 };
+
+
+enum class CardSuits
+{
+    clubs,
+    diamonds,
+    hearts,
+    spades,
+    
+    max_suits
+};
+
 
 struct Card
 {
-    Ranks rank{};
-    Suits suit{};
+    CardRank rank{};
+    CardSuits suit{};
 };
 
 struct Player
 {
-    int final_value{ 0 };
-    std::string name;
-    std::vector<int> cards;
-    std::vector<int> values;
+    int score { 0 };
+    int ace_count { 0 };
 };
 
-using player_type = std::vector<Player>;
-
-using deck_type = std::array<Card, 52>;
-
-
-void createDeck(deck_type& deck)
+/**
+ * Returns a char indicating the rank of the card
+ *
+ * @param rank the rank of a card
+ */
+char getCardRank(CardRank rank)
 {
-    int diff{0};
-    auto suits{ static_cast<int>(Suits::TOTAL) };
-    auto ranks{ static_cast<int>(Ranks::TOTAL) };
-    
-    for (int s{0}; s < suits; s++)
+    switch(rank)
     {
-        diff = s*ranks;
-        for (int r{0}; r < ranks; r++)
-        {
-            deck[diff +r].rank = static_cast<Ranks>(r);
-            deck[diff +r].suit = static_cast<Suits>(s);
-        }
-    }
-}
-
-
-void printCard(const Card card)
-{
-    
-    switch (card.rank) {
-        case Ranks::TWO:
-            std::cout << "2";
-            break;
-        case Ranks::THREE:
-            std::cout << "3";
-            break;
-        case Ranks::FOUR:
-            std::cout << "4";
-            break;
-        case Ranks::FIVE:
-            std::cout << "5";
-            break;
-        case Ranks::SIX:
-            std::cout << "6";
-            break;
-        case Ranks::SEVEN:
-            std::cout << "7";
-            break;
-        case Ranks::EIGHT:
-            std::cout << "8";
-            break;
-        case Ranks::NINE:
-            std::cout << "9";
-            break;
-        case Ranks::TEN:
-            std::cout << "T";
-            break;
-        case Ranks::JACK:
-            std::cout << "J";
-            break;
-        case Ranks::QUEEN:
-            std::cout << "Q";
-            break;
-        case Ranks::KING:
-            std::cout << "K";
-            break;
-        case Ranks::ACE:
-            std::cout << "A";
-            break;
+        case CardRank::two:
+            return '2';
+        case CardRank::three:
+            return '3';
+        case CardRank::four:
+            return '4';
+        case CardRank::five:
+            return '5';
+        case CardRank::six:
+            return '6';
+        case CardRank::seven:
+            return '7';
+        case CardRank::eight:
+            return '8';
+        case CardRank::nine:
+            return '9';
+        case CardRank::ten:
+            return 'T';
+        case CardRank::jack:
+            return 'J';
+        case CardRank::queen:
+            return 'Q';
+        case CardRank::king:
+            return 'K';
+        case CardRank::ace:
+            return 'A';
         default:
-            break;
+            return '0';
     }
-    
-    switch (card.suit)
+}
+
+
+/**
+ * Returns a char indicating the suit of the card
+ *
+ * @param suit the suit of a card
+ */
+char getCardSuit(CardSuits suit)
+{
+    switch(suit)
     {
-        case Suits::HEARTS:
-            std::cout << "H";
-            break;
-        case Suits::SPADES:
-            std::cout << "S";
-            break;
-        case Suits::DIAMONDS:
-            std::cout << "D";
-            break;
-        case Suits::CLUBS:
-            std::cout << "C";
-            break;
-            
+        case CardSuits::spades:
+            return 'S';
+        case CardSuits::hearts:
+            return 'H';
+        case CardSuits::diamonds:
+            return 'D';
+        case CardSuits::clubs:
+            return 'C';
         default:
-            break;
+            return 'Z';
     }
 }
 
-
-void printDeck(const deck_type deck)
+/**
+ * Creates a deck of cards.
+ */
+auto createDeck()
 {
-    for (auto element : deck)
+    static Card arr[cardsInADeck];
+    
+    for(int s{0}; s < static_cast<int>(CardSuits::max_suits); s++)
     {
-        printCard(element);
-        std::cout << "\t";
+        for(int r{0}; r < static_cast<int>(CardRank::max_rank); r++)
+        {
+            arr[(s*cardInASuit) + r].suit = static_cast<CardSuits>(s);
+            arr[(s*cardInASuit) + r].rank = static_cast<CardRank>(r);
+        }
+    }
+    return arr;
+}
+
+/**
+ * Returns value of card passed as an argument.
+ *
+ * @param card a struct holding card rank and suit
+ */
+int getCardValue(const Card card)
+{
+    switch(card.rank)
+    {
+        case CardRank::two:
+            return 2;
+        case CardRank::three:
+            return 3;
+        case CardRank::four:
+            return 4;
+        case CardRank::five:
+            return 5;
+        case CardRank::six:
+            return 6;
+        case CardRank::seven:
+            return 7;
+        case CardRank::eight:
+            return 8;
+        case CardRank::nine:
+            return 9;
+        case CardRank::ten:
+        case CardRank::jack:
+        case CardRank::queen:
+        case CardRank::king:
+            return 10;
+        case CardRank::ace:
+            return 11;
+        default:
+            assert(false && "should never happen");
+            return '0';
     }
 }
 
-void shuffleDeck(deck_type& deck)
+/**
+ * Returns user's desire to hit or stay.
+ */
+char getUserResponse()
 {
-    static std::mt19937 mt{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
-    std::shuffle(deck.begin(), deck.end(), mt);
+    char hit_or_stay;
+    do
+    {
+        cout << "\n\t[UserInput] - Do you want to hit? (y/n): ";
+        cin >> hit_or_stay;
+        cin.ignore(32767, '\n');
+    }
+    while (hit_or_stay != 'y' && hit_or_stay != 'n');
+    
+    return hit_or_stay;
+}
+
+void displayPlayerScore(int total, bool dealerIsPlaying = false)
+{
+    if (dealerIsPlaying)
+        cout << "\n\t[INFO] - dealer's score: " << total;
+    else
+        cout << "\n\t[INFO] - player's score: " << total;
 }
 
 
-void getCount(Player& player)
+/**
+ * Updates player score and ace count
+ *
+ * @param player a struct holding player score and ace count information
+ * @param card an enum holding rank and suit of the dealt card
+ */
+void checkAcesUpdatePlayer(Player &player, Card &card)
 {
-    /*
-     Function to get player counts at the beginning of the game
-    */
+    // Update player score and ace count
+    player.score += getCardValue(card);
+    if (getCardRank(card.rank) == 'A')
+        player.ace_count += 1;
     
-    int ace_value{ 1 };
-    std::string msg{};
-    
-    // If `values` vector empty add an element to it. At the beginning
-    // of the game the vector is empty.
-    if (not player.values.size())
-        player.values.push_back(static_cast<int>(0));
-    
-    for (int card : player.cards)
+    // Check if player score is greater than 21, if so decrease score by
+    // 10 and ace_count by 1
+    if (player.score > 21 and player.ace_count > 0)
     {
-        // The case where card count is less than 10.
-        if (card <= static_cast<int>(Ranks::TEN))
+        player.ace_count -= 1;
+        player.score -= 10;
+    }
+}
+
+/**
+ * Returns total score of cards drawn by dealer or player.
+ *
+ * @param deck an array of structs holding different cards and the rank and suit
+ *      they belong to
+ * @param dealerIsPlaying a bool indicating if the dealer or player is playing
+ */
+int play(Card deck[], bool dealerIsPlaying = false)
+{
+    // Initialize player
+    Player player;
+    
+    // Keep track of deck index and re-initialize if value reachess 51
+    static int deck_index{ 0 };
+    if (deck_index == 52)
+        deck_index = 0;
+    
+    // If dealer, pick one card from deck, else pick two cards
+    checkAcesUpdatePlayer(player, deck[deck_index]);
+    if (not dealerIsPlaying)
+        ++deck_index;
+    checkAcesUpdatePlayer(player, deck[deck_index]);
+    displayPlayerScore(player.score, dealerIsPlaying);
+    
+    bool keepPlaying{ 1 };
+    
+    // Run play until player/dealer has gone bust or decides to stop
+    while (keepPlaying)
+    {
+        // If dealer is playing, keep hitting until bust or `maxDealerValue`
+        if (dealerIsPlaying)
         {
-            // Increase value of all elements in `values` vector
-            // by the card value that has just been hit.
-            for (int& value : player.values)
+            if (player.score < maxDealerValue)
             {
-//                std::cout << "Before" << value << std::endl;
-                value += card + 2;
-//                std::cout << "After" << value << std::endl;
+                checkAcesUpdatePlayer(player, deck[deck_index]);
+                displayPlayerScore(player.score, dealerIsPlaying);
             }
-            
+            else
+                keepPlaying = 0;
         }
-        
-        // The case where an ACE is picked
-        else if (card == static_cast<int>(Ranks::ACE))
-        {
-            std::vector<int> temp_values{ player.values };
-            
-            // Double the length of `values` vector by copying all elements
-            // within it twice. Ex: [4,2] -> [4,2,4,2]
-            for (int temp_value : temp_values)
-                player.values.push_back(static_cast<int>(temp_value));
-            
-            // Add 1 to the first half of the `values` vector add 11 to the
-            // second half
-            for (int i{0}; i < player.values.size(); i++)
-            {
-                // Incrase the value of ace to 11 for the second half of the
-                // vector
-                if (i > (player.values.size())/2 - 1)
-                   ace_value = 11;
-                
-                // Add value of ace to element of vector `values`
-                player.values[i] += ace_value;
-            }
-        }
-        
-        // The case where JACK, QUEEN or KING is picked
+        // iF player is playing, keep hitting until player decides to stay or
+        // he/she has exceeded or equalled `blackJack`
         else
         {
-            switch (card)
+            if (player.score < blackJack)
             {
-                case static_cast<int>(Ranks::JACK):
-                case static_cast<int>(Ranks::QUEEN):
-                case static_cast<int>(Ranks::KING):
-                    for (int& value : player.values)
-                        value += 10;
-                    break;
-                // Basically should never happen
-                default:
-                    for (int value : player.values)
-                        value += 1000000;
+                if (getUserResponse() == 'y')
+                {
+                    checkAcesUpdatePlayer(player, deck[deck_index]);
+                    displayPlayerScore(player.score, dealerIsPlaying);
+                }
+                else
+                    keepPlaying = 0;
             }
+            else
+                keepPlaying = 0;
         }
+        ++deck_index;
         
     }
-    // Delete cards once the value is recorded
-    player.cards.erase(player.cards.begin(), player.cards.end());
-
-}
-
-void h_P_Assign(Player& player)
-{
-    int selected_value{ 0 };
-    
-    for (int value : player.values)
-    {
-        if (value > selected_value and value < 22)
-            selected_value = value;
-        else if (not selected_value)
-            selected_value = value;
-    }
-    
-    player.final_value = selected_value;
-}
-
-
-
-bool check(Player player)
-{
-
-    if (player.values[0] > maximumScore)
-        return 0;
-    return 1;
-}
-
-
-void print_PlayerStats(std::vector<int> player_values)
-{
-    /*
-     Function that prints total card value of players
-     */
-    
-    // Display player / dealer stats
-    for (int i{ 0 }; i < player_values.size(); i++)
-        if (i)
-            std::cout <<" or " << player_values[i];
-        else if (not i)
-            std::cout << player_values[i];
-    std::cout << std::endl;
-}
-
-
-std::string getPlayerName(int count)
-{
-    std::string name{};
-    std::cout << "Please enter name of Player " << count + 1 << ": ";
-    std::cin >> name;
-    
-    return name;
+    return player.score;
 }

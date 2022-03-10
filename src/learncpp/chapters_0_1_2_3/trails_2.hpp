@@ -8,8 +8,9 @@
 
 #ifndef trails_2_hpp
 #define trails_2_hpp
+# include "trails_2.cpp"
+int readNumber();
+void writeAnswer(int x);
 
-#include <stdio.h>
-void doSomething();
 
 #endif /* trails_2_hpp */

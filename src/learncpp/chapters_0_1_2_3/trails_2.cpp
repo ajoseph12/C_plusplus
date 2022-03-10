@@ -6,15 +6,5 @@
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
 
-
-#include <iostream>
-
-void doSomething()
-{
-#ifdef PRINT
-    std::cout << "Printing!";
-#endif
-#ifndef PRINT
-    std::cout << "Not printing!";
-#endif
-}
+int g_x { 2 }; // non-constant globals have external linkage by default
+extern constexpr int g_y { 3 }; // this extern gives g_y external linkage

@@ -5,86 +5,149 @@
 //  Created by allwyn joseph on 9/7/20.
 //  Copyright © 2020 allwyn joseph. All rights reserved.
 //
-#include <algorithm> // std::sort
-#include <vector>
 #include <iostream>
+#include <array>
 #include <string>
+#include <vector>
+#include <algorithm>
+
 
 using namespace std;
 
-struct student
+
+struct Student
 {
+    std::string prenom{};
     int grade{};
-    string name{};
 };
+using vector_type = std::vector<Student>;
 
 
-int get_UserInput()
+int getAndCheckInt(int number)
+/**
+ * Get and check validity of integer inputs by the user
+ *
+ * @return `number` if success else 0
+ */
 {
-    int num_of_students{0};
+    cin >> number;
     
-    do
+    if (cin.fail())
     {
-        cout << "Please enter the number of student you'll want to create records for : ";
-        cin >> num_of_students;
-        cin.ignore();
-        
-    }while(num_of_students <= 0);
-    
-    return num_of_students;
-}
-
-void print_struct(vector<student> data)
-{
-    for(auto student : data)
+        cin.clear();
+        cin.ignore(32767, '\n');
+        cout << "\tInvalid input please try again.";
+        return 0;
+    }
+    else
     {
-        cout<< student.name << " got a grade of " << student.grade <<endl;
+        cin.ignore(32767, '\n');
+        return number;
     }
 }
 
-int get_grade()
+
+int getNumberOfStudents()
+/**
+ * Get user input for number of students
+ *
+ * @return `numberOfStudents`
+ */
 {
-    int grade{0};
-    
-    cout << "Please enter student grade : ";
-    cin >> grade;
-    cin.ignore();
-    
-    return grade;
+    while (true)
+    {
+        cout << "\nHow many student do you want to seek to enter into the database? ";
+        
+        int numberOfStudents{};
+        
+        numberOfStudents = getAndCheckInt(numberOfStudents);
+        
+        if (numberOfStudents)
+            return numberOfStudents;
+    }
 }
 
-string get_name()
+int getStudentGrade()
+/**
+ * Get user input for grade of student
+ *
+ * @return `gradeOfStudent`
+ */
 {
-    string name;
-    
-    cout << "Please enter student name : ";
-    getline(cin, name);
-    
-    return name;
+    while (true)
+    {
+        cout << "\tPlease enter grade of student ";
+        
+        int gradeOfStudents{};
+        
+        gradeOfStudents = getAndCheckInt(gradeOfStudents);
+        
+        if (gradeOfStudents)
+            return gradeOfStudents;
+    }
 }
 
-bool grade_compare(const student a, const student b)
+string getStudentPrenom()
+/**
+ * Get user input for prenom of student
+ *
+ * @return `prenomOfStudents`
+ */
 {
+    cout << "\tPlease enter name of student: ";
+    string prenomOfStudent;
+    getline(cin, prenomOfStudent);
+    return prenomOfStudent;
+}
 
-    return a.grade > b.grade;
+
+void getStudentNameGrade(vector_type &student_db)
+/**
+ * Get user input for number of student
+ *
+ * @return `numberOfStudents`
+ */
+{
+    int student_num {1};
+    for (auto &student: student_db)
+    {
+        cout << "\nInformation concerning student " << student_num << '\n';
+        student.prenom = getStudentPrenom();
+        student.grade = getStudentGrade();
+        ++student_num;
+    }
+}
+
+bool great(Student a, Student b)
+{
+    return (a.grade > b.grade);
+}
+
+void printStudentNameGrade(vector_type student_db)
+/**
+ * Print student name and grade in descending order of grade.
+ *
+ * @param `student_db` vector of structs
+ */
+{
+    std::sort(student_db.begin(), student_db.end(), great);
+    
+    for (auto student : student_db)
+        cout << student.prenom << " got a grade of "<< student.grade << "\n";
     
 }
+
 
 int main()
 {
-    int num_studs{get_UserInput()};
-    vector<student> data;
     
-    for (int i{0}; i < num_studs; i++)
-    {
-        data.push_back(student());
-        
-        data[i].name = get_name();
-        data[i].grade = get_grade();
-    }
+    int numberOfStudents {getNumberOfStudents()};
     
-    std::sort(data.begin(), data.end(), grade_compare);
-    print_struct(data);
+    vector_type student_db(numberOfStudents);
+    
+    getStudentNameGrade(student_db);
+    
+    printStudentNameGrade(student_db);
     
     return 0;
 }
