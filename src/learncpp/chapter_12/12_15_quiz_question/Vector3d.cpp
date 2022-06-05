@@ -1,17 +1,17 @@
 //
-//  trails_2.cpp
+//  Vector3d.cpp
 //  learncpp
 //
-//  Created by allwyn joseph on 4/1/20.
-//  Copyright © 2020 allwyn joseph. All rights reserved.
+//  Created by allwyn joseph on 4/26/22.
+//  Copyright © 2022 allwyn joseph. All rights reserved.
 //
 
-#include "trails_2.hpp"
+#include "Vector3d.hpp"
 
 #include <iostream>
 
 Vector3d::Vector3d(double x, double y, double z)
-    : m_x{x}, m_y{y}, m_z{z}
+: m_x{x}, m_y{y}, m_z{z}
 {}
 
 void Vector3d::print() const

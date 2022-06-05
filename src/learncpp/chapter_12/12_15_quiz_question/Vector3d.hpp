@@ -1,16 +1,15 @@
 //
-//  trails_2.hpp
+//  Vector3d.hpp
 //  learncpp
 //
-//  Created by allwyn joseph on 4/1/20.
-//  Copyright © 2020 allwyn joseph. All rights reserved.
+//  Created by allwyn joseph on 4/26/22.
+//  Copyright © 2022 allwyn joseph. All rights reserved.
 //
 
-#ifndef trails_2_hpp
-#define trails_2_hpp
+#ifndef Vector3d_hpp
+#define Vector3d_hpp
 
-# include "trails_1.hpp"
-
+# include "Point3d.hpp"
 # include <iostream>
 
 class Vector3d
@@ -24,8 +23,9 @@ public:
     Vector3d(double x = 0.0, double y = 0.0, double z = 0.0);
     
     void print() const;
+    
     friend void Point3d::moveByVector(const Vector3d& v);
 };
 
 
-#endif /* trails_2_hpp */
+#endif /* Vector3d_hpp */

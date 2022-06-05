@@ -1,50 +1,49 @@
+//
+//  trails.cpp
+//  learncpp
+//
+//  Created by allwyn joseph on 4/26/22.
+//  Copyright © 2022 allwyn joseph. All rights reserved.
+//
+
+#include <cmath>
 #include <iostream>
-#include <sstream> // for std::stringstream
-#include <string>
 
-int binarySearch(const int* array, int target, int min, int max)
+class Simple
 {
-    static int median{};
+private:
+    int m_nID{};
     
-    // Recursion stop condirion
-    if (min > max)
-        return -1;
+public:
+    Simple(int nID)
+        : m_nID{ nID }
+    {
+        std::cout << "Constructing Simple " << nID << '\n';
+        }
+        
+    ~Simple()
+    {
+        std::cout << "Destructing Simple" << m_nID << '\n';
+    }
     
-    median = (min + max) / 2;
-    
-    if (array[median] == target)
-        return median;
-    
-    else if (array[median] > target)
-        return binarySearch(array, target, min, median - 1);
-    
-    else
-        return binarySearch(array, target, median + 1, max);
-}
-
+    int getID() { return m_nID; }
+};
+        
 int main()
 {
-    constexpr int array[]{ 3, 6, 8, 12, 14, 17, 20, 21, 26, 32, 36, 37, 42, 44, 48 };
-    int arr_size{ sizeof(array)/sizeof(array[0])};
-
-    // We're going to test a bunch of values to see if they produce the expected results
-    constexpr int numTestValues{ 9 };
-    // Here are the test values
-    constexpr int testValues[numTestValues]{ 0, 3, 12, 13, 22, 26, 43, 44, 49 };
-    // And here are the expected results for each value
-    int expectedValues[numTestValues]{ -1, 0, 3, -1, -1, 8, -1, 13, -1 };
-
-    // Loop through all of the test values
-    for (int count{ 0 }; count < numTestValues; ++count)
-    {
-        // See if our test value is in the array
-        int index{ binarySearch(array, testValues[count], 0, arr_size - 1) };
-        // If it matches our expected value, then great!
-        if (index == expectedValues[count])
-            std::cout << "test value " << testValues[count] << " passed!\n";
-        else // otherwise, our binarySearch() function must be broken
-            std::cout << "test value " << testValues[count] << " failed.  There's something wrong with your code!\n";
-    }
-
-    return 0;
-}
+    // Allocate a Simple on the stack
+    Simple simple{ 1 };
+    std::cout << simple.getID() << '\n';
+    
+    // Allocate a Simple dynamically
+    Simple* pSimple{ new Simple{ 2 } };
+    
+    std::cout << pSimple->getID() << '\n';
+    
+    // We allocated pSimple dynamically, so we have to delete it.
+    
+    
+//    return 0;
+    delete pSimple;
+} // simple goes out of scope here
+//
